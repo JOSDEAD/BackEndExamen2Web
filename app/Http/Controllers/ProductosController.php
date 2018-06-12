@@ -10,6 +10,7 @@ class ProductosController extends Controller
         $producto->identificador=$resquest->input('identificador');
         $producto->nombre=$resquest->input('nombre');
         $producto->impuesto=$resquest->input('impuesto');
+        $producto->precio=$resquest->input('precio');
         $producto->save();
         return response()->json(['producto'=>$producto],201);
     }
@@ -28,6 +29,7 @@ class ProductosController extends Controller
         $producto->identificador=$resquest->input('identificador');
         $producto->nombre=$resquest->input('nombre');
         $producto->impuesto=$resquest->input('impuesto');
+        $producto->precio=$resquest->input('precio');
         $producto->save();
         return response()->json(['producto'=>$producto],200);
     }

@@ -13,7 +13,7 @@ class CreateInventarioTable extends Migration
      */
     public function up()
     {
-        Schema::create('inventario', function (Blueprint $table) {
+        Schema::create('inventarios', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->text('identificador');
@@ -32,6 +32,6 @@ class CreateInventarioTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inventario');
+        Schema::dropIfExists('inventarios');
     }
 }

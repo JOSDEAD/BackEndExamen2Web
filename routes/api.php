@@ -40,16 +40,16 @@ Route::delete('/eliminarProducto/{id}',[
 ]);
 //Inventario
 Route::post('/insertarInventario',[ 
-    'uses'=>'InventarioController@insertarInventario'
+    'uses'=>'InventariosController@insertarInventario'
 ]);
 Route::get('/obtenerInventario',[ 
-    'uses'=>'InventarioController@obtenerInventario'
+    'uses'=>'InventariosController@obtenerInventario'
 ]);
 Route::put('/modificarInventario/{id}',[ 
-    'uses'=>'InventarioController@modificarInventario'
+    'uses'=>'InventariosController@modificarInventario'
 ]);
 Route::delete('/eliminarInventario/{id}',[ 
-    'uses'=>'InventarioController@eliminarInventario'
+    'uses'=>'InventariosController@eliminarInventario'
 ]);
 //Facturas
 Route::post('/insertarFactura',[ 
@@ -57,9 +57,6 @@ Route::post('/insertarFactura',[
 ]);
 Route::get('/obtenerFacturas',[ 
     'uses'=>'FacturasController@obtenerFacturas'
-]);
-Route::put('/modificarFactura',[ 
-    'uses'=>'FacturasController@modificarFactura'
 ]);
 Route::delete('/eliminarFactura/{id}',[ 
     'uses'=>'FacturasController@eliminarFactura'

@@ -18,6 +18,7 @@ class CreateProductoTable extends Migration
             $table->timestamps();
             $table->text('identificador');
             $table->text('nombre');
+            $table->unsignedInteger('precio');
             $table->unsignedInteger('impuesto');
         });
     }

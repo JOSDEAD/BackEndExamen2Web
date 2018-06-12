@@ -3,13 +3,14 @@ namespace App\Http\Controllers;
 use App\Inventario;
 use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 class InventariosController extends Controller
 {
 
     public function insertarInventario(Request $resquest){
         $inventario=new Inventario();
         $inventario->identificador=$resquest->input('identificador');
-        $inventario->identificadorInventario=$resquest->input('identificadorInventario');
+        $inventario->identificadorProducto=$resquest->input('identificadorProducto');
         $inventario->cantidad=$resquest->input('cantidad');
         $inventario->cantidadMaxima=$resquest->input('cantidadMaxima');
         $inventario->cantidadMinima=$resquest->input('cantidadMinima');
@@ -17,8 +18,13 @@ class InventariosController extends Controller
         $inventario->save();
         return response()->json(['inventario'=>$inventario],201);
     }
-    public function obtenerInventarios(){
-        $inventarios= Inventario::all();
+    public function obtenerInventario(){
+        
+        $inventarios=  DB::table('inventarios')
+        ->leftjoin('productos', 'inventarios.identificadorProducto', '=', 'productos.identificador')
+        ->select('inventarios.*', 'productos.nombre', 'productos.precio','productos.impuesto')
+        ->get();
+
         $response=[
             'inventarios'=>$inventarios
         ];
@@ -30,7 +36,7 @@ class InventariosController extends Controller
             return response()->json(['message'=>'inventario no encontrado'],404);
         }
         $inventario->identificador=$resquest->input('identificador');
-        $inventario->identificadorInventario=$resquest->input('identificadorInventario');
+        $inventario->identificadorProducto=$resquest->input('identificadorProducto');
         $inventario->cantidad=$resquest->input('cantidad');
         $inventario->cantidadMaxima=$resquest->input('cantidadMaxima');
         $inventario->cantidadMinima=$resquest->input('cantidadMinima');
